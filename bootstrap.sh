@@ -29,13 +29,15 @@ fi
 
 # conda support: check whether conda is available and if so where it's located
 if command -v conda; then
+    echo "adding conda"
     if test -z "$CONDA_PREFIX"; then
         CONDA_PREFIX=$(basename $(which conda))
     fi
     CONDA_AUTOCONF_ARCHIVE_PATH="${CONDA_PREFIX}/share/aclocal/"
+    echo "conda path to add: ${CONDA_AUTOCONF_ARCHIVE_PATH}"
 fi
 
-# autoconf-archive Debian package, aclocal-archive RPM, obsolete/badly supported OS, installed in home dir
+# autoconf-archive Debian package, aclocal-archive RPM, obsolete/badly supported OS, installed in home dir, installed in Conda dir
 acdirs="/usr/share/autoconf-archive/ /usr/share/aclocal/ /usr/local/share/aclocal/ $HOME/local/share/autoconf-archive/ $CONDA_AUTOCONF_ARCHIVE_PATH"
 
 found=false
