@@ -27,8 +27,16 @@ if $automake --version|head -1 |grep ' 1\.[4-9]'; then
     exit 1
 fi
 
+# conda support: check whether conda is available and if so where it's located
+if command -v conda; then
+    if test -z "$CONDA_PREFIX"; then
+        CONDA_PREFIX=$(basename $(which conda))
+    fi
+    CONDA_AUTOCONF_ARCHIVE_PATH="${CONDA_PREFIX}/share/aclocal/"
+fi
+
 # autoconf-archive Debian package, aclocal-archive RPM, obsolete/badly supported OS, installed in home dir
-acdirs="/usr/share/autoconf-archive/ /usr/share/aclocal/ /usr/local/share/aclocal/ $HOME/local/share/autoconf-archive/"
+acdirs="/usr/share/autoconf-archive/ /usr/share/aclocal/ /usr/local/share/aclocal/ $HOME/local/share/autoconf-archive/ $CONDA_AUTOCONF_ARCHIVE_PATH"
 
 found=false
 for d in $acdirs
