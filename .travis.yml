@@ -48,7 +48,7 @@ matrix:
       compiler: clang++
       env:
         - SCAN=echo
-        - BOOST=on
+        - BOOST=off
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
