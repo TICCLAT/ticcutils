@@ -25,7 +25,7 @@ matrix:
       compiler: gcc
       env:
         - SCAN=echo
-        - BOOSTFLAG=--with-boost=yes
+        - BOOSTFLAG=--with-boost=no
 
     - os: linux
       cache: ccache
@@ -45,7 +45,7 @@ matrix:
       compiler: clang++
       env:
         - SCAN=echo
-        - BOOSTFLAG=--with-boost=yes
+        - BOOSTFLAG=--with-boost=no
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
