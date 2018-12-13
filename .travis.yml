@@ -19,14 +19,14 @@ matrix:
       compiler: gcc
       env:
         - SCAN=echo
-        - BOOST=on
+        - BOOST=yes
 
     - os: linux
       cache: ccache
       compiler: gcc
       env:
         - SCAN=echo
-        - BOOST=off
+        - BOOST=no
 
     - os: linux
       cache: ccache
@@ -34,21 +34,21 @@ matrix:
       env:
         - SCAN=scan-build
         - OPENMPFLAG=--disable-openmp
-        - BOOST=on
+        - BOOST=yes
 
     - os: osx
       cache: ccache
       compiler: clang++
       env:
         - SCAN=echo
-        - BOOST=on
+        - BOOST=yes
 
     - os: osx
       cache: ccache
       compiler: clang++
       env:
         - SCAN=echo
-        - BOOST=off
+        - BOOST=no
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
